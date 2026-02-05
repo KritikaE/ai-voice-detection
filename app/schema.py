@@ -1,16 +1,15 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional
 
 class AudioRequest(BaseModel):
-    # We keep everything optional to avoid 422 errors
-    audio_base64: Optional[str] = None
+    audio_base64: Optional[str] = Field(
+        None,
+        alias="audioBase64Format"
+    )
+
     language: Optional[str] = None
     audio_format: Optional[str] = None
 
     class Config:
-        extra = "allow"   # accept unknown fields safely
-
-
-class PredictionResponse(BaseModel):
-    classification: str
-    confidence: float
+        allow_population_by_field_name = True
+        extra = "allow"
