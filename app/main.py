@@ -6,7 +6,16 @@ import librosa
 import numpy as np
 import os
 
-API_KEY = os.getenv("API_KEY", "voice-detection-secret-key")
+#API_KEY = os.getenv("API_KEY", "voice-detection-secret-key")
+
+API_KEY = os.getenv("API_KEY")
+
+if not API_KEY:
+    raise RuntimeError(
+        "API_KEY environment variable not set. "
+        "Set it before running the application."
+    )
+
 
 def verify_api_key(x_api_key: str = Header(...)):
     if x_api_key != API_KEY:
