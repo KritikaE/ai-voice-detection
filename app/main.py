@@ -48,6 +48,7 @@ def predict(request: AudioRequest, _: str = Depends(verify_api_key)):
         or body.get("Audio Base64 Format")
         or body.get("audioBase64")
         or body.get("audio_base64_format")
+        or body.get("audioBase64Format")
     )
 
     if not audio_base64 or not audio_base64.strip():
