@@ -3,7 +3,7 @@ import numpy as np
 import librosa
 from fastapi import FastAPI, Header, HTTPException, Depends
 
-from app.schemas import AudioRequest, PredictionResponse
+from app.schema import AudioRequest, PredictionResponse
 from app.audio import decode_base64_audio
 from app.model import detector, EXPECTED_FEATURE_DIM
 
