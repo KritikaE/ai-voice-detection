@@ -3,6 +3,8 @@ import os
 import joblib
 import numpy as np
 
+EXPECTED_FEATURE_DIM = 40
+
 MODEL_PATH = os.getenv("MODEL_PATH", "model/detector.pkl")
 
 class VoiceDetector:

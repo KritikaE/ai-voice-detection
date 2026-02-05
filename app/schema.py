@@ -1,9 +1,12 @@
-# schemas.py
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+from typing import Optional
 
 class AudioRequest(BaseModel):
-    audio_base64: str = Field(..., description="Base64-encoded MP3 audio")
+    audio_base64: str
+    language: Optional[str] = None
+    audio_format: Optional[str] = None
+
 
 class PredictionResponse(BaseModel):
-    classification: str = Field(..., example="HUMAN")
-    confidence: float = Field(..., ge=0.0, le=1.0, example=0.85)
+    classification: str
+    confidence: float
